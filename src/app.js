@@ -7,6 +7,7 @@ app.use(express.json());
 const movieControllers = require('./controllers/movieControllers');
 const usersControllers = require('./controllers/usersControllers');
 
+app.put('/api/movies/:id', movieControllers.updateMovie);
 app.post('/api/movies', movieControllers.postMovie);
 app.post('/api/users/:id', usersControllers.postUser);
 app.get('/api/movies', movieControllers.getMovies);
