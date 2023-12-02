@@ -73,6 +73,18 @@ describe('POST /api/users/:id', () => {
   });
 });
 
+describe('POST /api/users', () => {
+  it('should return an error', async () => {
+    const userWithMissingProps = { firstname: 'Stephane' };
+
+    const response = await request(app)
+      .post('/api/users/1')
+      .send(userWithMissingProps);
+
+    expect(response.status).toEqual(422);
+  });
+});
+
 describe('PUT /api/users/:id', () => {
   it('should edit user', async () => {
     const newUser = {
@@ -133,7 +145,7 @@ describe('PUT /api/users/:id', () => {
       .put(`/api/users/1`)
       .send(userWithMissingProps);
 
-    expect(response.status).toEqual(500);
+      expect(response.status).toEqual(422);;
   });
 
   it('should return no user', async () => {
