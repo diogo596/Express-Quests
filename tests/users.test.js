@@ -41,7 +41,7 @@ describe('POST /api/users/:id', () => {
       language: 'French',
     };
 
-    const response = await request(app).post('/api/users/:id').send(newUser);
+    const response = await request(app).post('/api/users').send(newUser);
 
     expect(response.status).toEqual(201);
     expect(response.body).toHaveProperty('id');
@@ -78,7 +78,7 @@ describe('POST /api/users', () => {
     const userWithMissingProps = { firstname: 'Stephane' };
 
     const response = await request(app)
-      .post('/api/users/1')
+      .post('/api/users')
       .send(userWithMissingProps);
 
     expect(response.status).toEqual(422);
